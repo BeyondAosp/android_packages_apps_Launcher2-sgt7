@@ -169,7 +169,10 @@ public class DragLayer extends FrameLayout implements ViewGroup.OnHierarchyChang
 
     @Override
     public boolean onInterceptHoverEvent(MotionEvent ev) {
-        Folder currentFolder = mLauncher.getWorkspace().getOpenFolder();
+        Folder currentFolder;
+        if (mLauncher != null && mLauncher.getWorkspace() != null) {
+            currentFolder = mLauncher.getWorkspace().getOpenFolder();
+        }
         if (currentFolder == null) {
             return false;
         } else {
